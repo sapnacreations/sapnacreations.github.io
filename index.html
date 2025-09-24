@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sapna Creations — Handmade Pencil Sketches</title>
+  <meta name="description" content="Sapna Creations — Custom handmade pencil sketches (A4). Turn your photo into a realistic portrait. Order on Daraz or contact on WhatsApp." />
+  <meta name="robots" content="index,follow" />
+  <!-- Tailwind CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--bg1:#05060a;--bg2:#0b0f1a;--neon1:rgba(124,58,237,0.95);--neon2:rgba(14,165,233,0.6);--muted:#9fb0c8}
+    html,body{height:100%}
+    body { background: linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%); color: #e6eef8; }
+    .neon { text-shadow: 0 0 12px var(--neon1), 0 0 28px var(--neon2); }
+    .glass { backdrop-filter: blur(6px); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); }
+
+    /* subtle glow on interactive elements when cursor near */
+    .glow-on-hover{transition:box-shadow .22s, transform .22s}
+
+    /* hover card glow for gallery items */
+    .card-hover:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
+    .transition-smooth{transition:all .28s cubic-bezier(.2,.9,.3,1)}
+
+    /* logo circle */
+    .logo-circle{width:240px;height:240px;border-radius:9999px;display:grid;place-items:center;padding:12px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:inset 0 -8px 30px rgba(2,6,23,0.6);cursor:pointer}
+    .logo-circle img{width:100%;height:100%;object-fit:cover;border-radius:9999px}
+
+    /* header small logo */
+    .logo-small{width:56px;height:56px;border-radius:9999px;overflow:hidden}
+    .logo-small img{width:100%;height:100%;object-fit:cover}
+
+    /* social icon circle */
+    .social-round{width:48px;height:48px;border-radius:9999px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+    .social-round svg{width:20px;height:20px}
+    .social-img{width:20px;height:20px;object-fit:cover;border-radius:4px;display:block}
+
+    /* click glow effect */
+    .glow-click{box-shadow:0 18px 50px rgba(124,58,237,0.28)!important;transform:translateY(-4px) scale(1.02)!important}
+
+    /* focus styles for accessibility */
+    a:focus, button:focus{outline:3px solid rgba(124,58,237,0.2);outline-offset:4px}
+
+    /* smooth scroll */
+    html{scroll-behavior:smooth}
+
+    /* responsive tweaks */
+    @media (max-width:768px){.logo-circle{width:150px;height:150px}}
+  </style>
+</head>
+<body class="font-sans leading-normal tracking-normal relative overflow-x-hidden">
+  <!--
+    Notes for you (Tayyab):
+    - To replace the site logo drop your circular logo image at: assets/images/logo.jpg
+      (header small logo uses the same file)
+    - You can also add social icons at: assets/icons/facebook.png, instagram.png, tiktok.png, pinterest.png, youtube.png, linkedin.png, x.png
+      The code will try to load those images and if they don't exist it will fallback to vector icons embedded below.
+    - Add gallery images to: assets/images/ and then add an object to the galleryItems array in the script section.
+  -->
+
+  <!-- Cursor glow layers -->
+  <div class="cursor-glow" id="cursorGlow">
+    <div class="g small" id="gSmall"></div>
+    <div class="g mid" id="gMid"></div>
+    <div class="g large" id="gLarge"></div>
+  </div>
+
+  <header class="w-full py-6 px-6 md:px-12 relative z-30">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="logo-small">
+          <a href="https://s.daraz.pk/s.bCbPu" target="_blank" rel="noopener noreferrer" title="Open Daraz Store">
+            <img src="assets/images/logo.jpg" alt="Sapna Creations logo" loading="lazy" class="object-cover w-full h-full" />
+          </a>
+        </div>
+        <div>
+          <h1 class="text-3xl font-bold neon">Sapna Creations</h1>
+          <p class="text-sm text-slate-300">Custom Handmade Pencil Sketches</p>
+        </div>
+      </div>
+      <nav class="space-x-4 text-sm">
+        <a href="#gallery" class="hover:underline">Gallery</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-12 relative z-20">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-extrabold neon">Turn your photo into a pencil sketch</h2>
+        <p class="mt-4 text-slate-300">Handmade Pencil Sketches — A4 Size — Perfect as Gifts or Keepsakes. Order on Daraz or contact me directly on WhatsApp.</p>
+        <div class="mt-6 flex gap-4">
+          <a href="#gallery" class="px-6 py-3 glass rounded-lg transition-smooth">View Gallery</a>
+          <a href="#contact" class="px-6 py-3 bg-purple-600 rounded-lg transition-smooth">Contact / Order</a>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center">
+        <!-- Circular logo area with subtle animated glow (cursor interacts) -->
+        <a href="https://s.daraz.pk/s.bCbPu" target="_blank" rel="noopener noreferrer" class="logo-circle glass transition-smooth glow-on-hover" id="logoCircle" title="Sapna Creations — Open Daraz Store" tabindex="0">
+          <img src="assets/images/logo.jpg" alt="Sapna Creations — logo in circle" id="mainLogo" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-12 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 md:px-12">
+      <h3 class="text-2xl font-bold neon">Gallery</h3>
+      <p class="text-slate-300 mt-2">I'll upload new sketches here — only the title will display. Click any sketch to enlarge and see details.</p>
+
+      <div id="galleryGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Gallery items injected by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 hidden items-center justify-center z-50 bg-black/70 p-6" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="max-w-4xl w-full glass rounded-xl p-6">
+      <div class="flex justify-between items-start">
+        <h4 id="lbTitle" class="text-xl font-bold"></h4>
+        <button id="lbClose" class="text-slate-300" aria-label="Close">Close ✕</button>
+      </div>
+      <div class="mt-4">
+        <img id="lbImage" src="" alt="Enlarged sketch" class="w-full rounded-lg object-contain max-h-[60vh]" loading="lazy" />
+        <p id="lbDesc" class="mt-4 text-slate-300"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+<section id="about" class="py-12 relative z-10">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h3 class="text-2xl font-bold">About Sapna Creations</h3>
+      <p class="mt-3 text-slate-300">My name is <strong>Tayyab</strong>. I am a professional artist who creates realistic, handmade pencil sketches on A4 paper. Each sketch is crafted with care using different pencil shades to capture details, shadows and emotion — perfect as a unique gift or keepsake.</p>
+      <ul class="mt-3 text-slate-300 list-disc ml-5">
+        <li>Handmade — not printed</li>
+        <li>High-quality sketch paper (A4)</li>
+        <li>Simple order process via Daraz or direct contact</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="glass rounded-xl p-6">
+        <h4 class="font-semibold">Photo Guidelines</h4>
+        <ul class="mt-3 text-slate-300 list-disc ml-5">
+          <li>Send a clear, close-up photo with the subject facing the camera for best detail.</li>
+          <li>Avoid heavy shadows, blur, or low-resolution images — clear daylight photos work best.</li>
+          <li>If more than one person appears in the photo, an <strong>additional charge</strong> applies per extra person.</li>
+          <li>After placing your order, send the chosen photo via WhatsApp with your order reference and any special requests.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact -->
+  <section id="contact" class="py-12 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 md:px-12">
+      <h3 class="text-2xl font-bold neon">Contact & Order</h3>
+      <div class="mt-4 grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-xl p-6">
+          <h4 class="font-semibold">Order on Daraz</h4>
+          <p class="text-slate-300 mt-2">Click the button below to open my Daraz store and complete your order.</p>
+          <a id="darazBtn" href="https://s.daraz.pk/s.bCbPu" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 px-6 py-3 bg-orange-500 rounded-lg transition-smooth">Open Daraz Store</a>
+        </div>
+        <div class="glass rounded-xl p-6">
+          <h4 class="font-semibold">Message / Custom Order</h4>
+          <p class="text-slate-300 mt-2">Prefer direct contact? Send your photo and details on WhatsApp.</p>
+          <a id="whatsappBtn" href="https://wa.me/923424755177" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 px-6 py-3 bg-green-600 rounded-lg transition-smooth">Message on WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h5 class="font-semibold">Social Media</h5>
+        <div class="flex flex-wrap gap-4 mt-3 text-xl items-center">
+          <!-- Circle icons that open provided links. If you upload assets/icons/*.png the image will show instead of the SVG. -->
+          <a href="https://www.facebook.com/ichbintayyab" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-round transition-smooth social-link" data-key="facebook" title="Facebook">
+            <img src="assets/icons/facebook.png" alt="Facebook" class="social-img" onerror="this.style.display='none'" />
+          </a>
+
+          <a href="https://www.instagram.com/ichbintayyab" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-round transition-smooth social-link" data-key="instagram" title="Instagram">
+            <img src="assets/icons/instagram.png" alt="Instagram" class="social-img" onerror="this.style.display='none'" />
+          </a>
+
+          <a href="https://www.tiktok.com/@ichbintayyab" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-round transition-smooth social-link" data-key="tiktok" title="TikTok">
+            <img src="assets/icons/tiktok.png" alt="TikTok" class="social-img" onerror="this.style.display='none'" />
+          </a>
+
+          <a href="https://www.pinterest.com/ichbintayyab" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="social-round transition-smooth social-link" data-key="pinterest" title="Pinterest">
+            <img src="assets/icons/pinterest.png" alt="Pinterest" class="social-img" onerror="this.style.display='none'" />
+          </a>
+
+          <a href="https://www.youtube.com/@ichbintayyab" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-round transition-smooth social-link" data-key="youtube" title="YouTube">
+            <img src="assets/icons/youtube.png" alt="YouTube" class="social-img" onerror="this.style.display='none'" />
+          </a>
+
+          <a href="https://www.linkedin.com/in/ichbintayyab/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-round transition-smooth social-link" data-key="linkedin" title="LinkedIn">
+            <img src="assets/icons/linkedin.png" alt="LinkedIn" class="social-img" onerror="this.style.display='none'" />
+          </a>
+
+          <a href="https://x.com/ichbintayyab" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-round transition-smooth social-link" data-key="x" title="X">
+            <img src="assets/icons/x.png" alt="X" class="social-img" onerror="this.style.display='none'" />
+            
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-6 text-center text-sm text-slate-400 relative z-10">
+    © Sapna Creations — All rights reserved
+  </footer>
+
+  <script>
+    // Cursor glow movement with smooth easing and proximity-based scale for logo
+    const gSmall = document.getElementById('gSmall');
+    const gMid = document.getElementById('gMid');
+    const gLarge = document.getElementById('gLarge');
+    const logoCircle = document.getElementById('logoCircle');
+
+    let lastX = window.innerWidth/2, lastY = window.innerHeight/2;
+    function lerp(a,b,n){return (1-n)*a + n*b}
+
+    document.addEventListener('mousemove', e => {
+      const x = e.clientX; const y = e.clientY;
+      // smooth follow
+      lastX = lerp(lastX, x, 0.22);
+      lastY = lerp(lastY, y, 0.22);
+      gSmall.style.transform = `translate(${lastX}px, ${lastY}px)`;
+      gMid.style.transform = `translate(${lastX}px, ${lastY}px)`;
+      gLarge.style.transform = `translate(${lastX}px, ${lastY}px)`;
+      gSmall.style.opacity = 1; gMid.style.opacity = 0.9; gLarge.style.opacity = 0.7;
+
+      // logo proximity effect
+      const rect = logoCircle.getBoundingClientRect();
+      const dx = x - (rect.left + rect.width/2);
+      const dy = y - (rect.top + rect.height/2);
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const max = 320; // effect radius
+      const pct = Math.max(0, 1 - dist/max);
+      logoCircle.style.transform = `translateY(${ -6 * pct }px) scale(${ 1 + 0.02*pct })`;
+      logoCircle.style.boxShadow = `0 ${10*pct}px ${30*pct}px rgba(124,58,237,${0.06 + 0.2*pct})`;
+    });
+
+    document.addEventListener('mouseleave', () => { gSmall.style.opacity = 0; gMid.style.opacity = 0; gLarge.style.opacity = 0; if(logoCircle) { logoCircle.style.transform = 'translateY(0)'; logoCircle.style.boxShadow = ''; } });
+
+    // Make logo clickable via keyboard as well
+    if(logoCircle){
+      // keyboard accessibility: open store on Enter/Space
+      logoCircle.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') window.open('https://s.daraz.pk/s.bCbPu', '_blank'); });
+
+      // click behaviour: brief glow animation then open link (anchor default)
+      function logoPulse(){
+        // add temporary style for stronger glow
+        const prev = logoCircle.style.transition;
+        logoCircle.style.transition = 'transform .16s ease, box-shadow .16s ease';
+        logoCircle.classList.add('glow-click');
+        setTimeout(()=>{ logoCircle.classList.remove('glow-click'); logoCircle.style.transition = prev; }, 420);
+      }
+
+      logoCircle.addEventListener('click', (e)=>{ logoPulse(); /* anchor will open link */ });
+    }
+
+    // Gallery items (add new sketches by placing image in assets/images/ and adding an object here)
+    const galleryItems = [
+      // Add new items: { id: 's3', img: 'assets/images/your-file.jpg', title: 'Title for the sketch', desc: 'Short description' }
+      { id: 's1', img: 'assets/images/sample1.jpg', title: 'Custom Handmade Pencil Sketch — Sketch # 001', desc: 'Handmade A4 portrait.' },
+      { id: 's2', img: 'assets/images/sample2.jpg', title: 'Custom Handmade Pencil Sketch — Sketch # 002', desc: 'Handmade A4 portrait.' }
+    ];
+
+    const galleryGrid = document.getElementById('galleryGrid');
+
+    function renderGallery(){
+      galleryGrid.innerHTML = '';
+      galleryItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'rounded-xl overflow-hidden glass p-3 transition-smooth card-hover cursor-pointer';
+        card.innerHTML = `
+          <div class="relative"> 
+            <img src="${item.img}" alt="${item.title}" class="w-full h-56 object-cover rounded-lg" loading="lazy" />
+            <div class="mt-3 flex items-center gap-2"> 
+              <h4 class="font-semibold text-lg text-slate-100 truncate">${item.title}</h4>
+            </div>
+          </div>
+        `;
+        // click to open lightbox
+        card.addEventListener('click', () => openLightbox(item));
+        galleryGrid.appendChild(card);
+      });
+    }
+
+    function openLightbox(item){
+      document.getElementById('lbTitle').textContent = item.title;
+      document.getElementById('lbImage').src = item.img;
+      document.getElementById('lbImage').alt = item.title + ' — Sapna Creations';
+      document.getElementById('lbDesc').textContent = item.desc || '';
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+      lb.setAttribute('aria-hidden','false');
+    }
+
+    // close lightbox via button, click outside or ESC
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id === 'lightbox') closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+    function closeLightbox(){ const lb = document.getElementById('lightbox'); lb.classList.add('hidden'); lb.classList.remove('flex'); lb.setAttribute('aria-hidden','true'); }
+
+    renderGallery();
+
+    // Add click glow for social and action buttons
+    document.querySelectorAll('.social-link, #darazBtn, #whatsappBtn').forEach(el => {
+      el.addEventListener('click', (e) => {
+        el.classList.add('glow-click');
+        setTimeout(()=> el.classList.remove('glow-click'), 420);
+      });
+      // keyboard activate glow
+      el.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.classList.add('glow-click'); setTimeout(()=> el.classList.remove('glow-click'), 420); window.open(el.href, '_blank'); } });
+    });
+  </script>
+
+  <!-- JSON-LD for basic SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sapna Creations",
+    "url": "https://s.daraz.pk/s.bCbPu",
+    "sameAs": [
+      "https://www.facebook.com/ichbintayyab",
+      "https://www.instagram.com/ichbintayyab",
+      "https://www.tiktok.com/@ichbintayyab",
+      "https://www.pinterest.com/ichbintayyab",
+      "https://www.youtube.com/@ichbintayyab",
+      "https://www.linkedin.com/in/ichbintayyab/",
+      "https://x.com/ichbintayyab"
+    ]
+  }
+  </script>
+</body>
+</html>

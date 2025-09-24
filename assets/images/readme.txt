@@ -1,0 +1,1 @@
+Place your sketch images here. Example: sample1.jpg, portrait1.jpg
